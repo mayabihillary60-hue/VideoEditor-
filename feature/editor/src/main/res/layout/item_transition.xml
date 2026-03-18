@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/transition_item_bg"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iv_transition_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:tint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_transition_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transition"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <!-- Selected overlay -->
+    <View
+        android:id="@+id/selected_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4DFF4081"
+        android:visibility="gone" />
+
+</FrameLayout>
