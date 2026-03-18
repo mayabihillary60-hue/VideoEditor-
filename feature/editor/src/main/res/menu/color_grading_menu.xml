@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_histogram"
+        android:title="Histogram"
+        android:icon="@drawable/ic_histogram"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_split_view"
+        android:title="Split View"
+        android:icon="@drawable/ic_split_view"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_presets"
+        android:title="Presets"
+        android:icon="@drawable/ic_presets"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_undo"
+        android:title="Undo"
+        android:icon="@drawable/ic_undo"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_redo"
+        android:title="Redo"
+        android:icon="@drawable/ic_redo"
+        app:showAsAction="always" />
+
+</menu>
