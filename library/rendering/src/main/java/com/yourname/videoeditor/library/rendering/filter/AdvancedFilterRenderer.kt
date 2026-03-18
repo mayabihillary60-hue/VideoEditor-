@@ -537,7 +537,7 @@ class AdvancedFilterRenderer(private val context: Context) : GLSurfaceView.Rende
         this.vignetteIntensity = value.coerceIn(0f, 2f)
     }
 
-    fun getFilterParameters(filter: FilterType): List<FilterParameter> {
+        fun getFilterParameters(filter: FilterType): List<FilterParameter> {
         return when (filter) {
             FilterType.GAUSSIAN_BLUR -> listOf(
                 FilterParameter("Blur Radius", 0f, 0.1f, 0.02f)
@@ -547,4 +547,59 @@ class AdvancedFilterRenderer(private val context: Context) : GLSurfaceView.Rende
             )
             FilterType.VIGNETTE -> listOf(
                 FilterParameter("Intensity", 0f, 2f, 1f)
+            )
+            FilterType.OIL_PAINTING, FilterType.CARTOON, FilterType.SKETCH -> listOf(
+                FilterParameter("Effect Strength", 0f, 1f, 0.5f)
+            )
+            FilterType.BULGE, FilterType.PINCH -> listOf(
+                FilterParameter("Distortion", 0f, 2f, 1f)
+            )
+            FilterType.PIXELATE -> listOf(
+                FilterParameter("Pixel Size", 0f, 1f, 0.3f)
+            )
+            else -> listOf(
+                FilterParameter("Intensity", 0f, 1f, 1f)
+            )
+        }
+    }
+
+    override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
+        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
+        createProgram()
+    }
+
+    override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
+        GLES20.glViewport(0, 0, width, height)
+    }
+
+    override fun onDrawFrame(gl: GL10?) {
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
+        
+        // Apply current filter
+        // This would be called for each frame
+    }
+
+    private fun createProgram() {
+        val vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode)
+        val fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderAdvanced)
+        
+        program = GLES20.glCreateProgram()
+        GLES20.glAttachShader(program, vertexShader)
+        GLES20.glAttachShader(program, fragmentShader)
+        GLES20.glLinkProgram(program)
+        
+        vPositionHandle = GLES20.glGetAttribLocation(program, "vPosition")
+        vTexCoordinateHandle = GLES20.glGetAttribLocation(program, "vTexCoordinate")
+        uMVPMatrixHandle = GLES20.glGetUniformLocation(program, "uMVPMatrix")
+        inputTextureHandle = GLES20.glGetUniformLocation(program, "inputTexture")
+        externalTextureHandle = GLES20.glGetUniformLocation(program, "externalTexture")
+    }
+
+    private fun loadShader(type: Int, shaderCode: String): Int {
+        val shader = GLES20.glCreateShader(type)
+        GLES20.glShaderSource(shader, shaderCode)
+        GLES20.glCompileShader(shader)
+        return shader
+    }
+}
  
