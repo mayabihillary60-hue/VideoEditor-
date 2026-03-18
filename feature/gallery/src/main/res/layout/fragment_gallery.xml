@@ -63,3 +63,52 @@
     </FrameLayout>
 
 </LinearLayout>
+
+// Add this to setupObservers() function
+setupToolbar()
+
+// Add these new functions to GalleryFragment class
+
+private fun setupToolbar() {
+    binding.toolbar.setOnMenuItemClickListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.action_select_all -> {
+                selectAllVideos()
+                true
+            }
+            R.id.action_import -> {
+                importSelectedVideos()
+                true
+            }
+            R.id.action_cancel -> {
+                viewModel.clearSelection()
+                true
+            }
+            else -> false
+        }
+    }
+}
+
+private fun selectAllVideos() {
+    viewModel.videos.value?.forEach { video ->
+        if (!viewModel.isSelected(video)) {
+            viewModel.toggleVideoSelection(video)
+        }
+    }
+}
+
+private fun importSelectedVideos() {
+    val selectedVideos = viewModel.selectedVideos.value
+    if (selectedVideos.isNotEmpty()) {
+        // Navigate to editor with selected videos
+        // You can use a callback interface here
+        val result = Bundle().apply {
+            putParcelableArrayList("selected_videos", ArrayList(selectedVideos))
+        }
+        parentFragmentManager.setFragmentResult("gallery_result", result)
+        
+        // Clear selection and navigate back
+        viewModel.clearSelection()
+        parentFragmentManager.popBackStack()
+    }
+}
