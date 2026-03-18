@@ -1,0 +1,38 @@
+<!-- feature/editor/src/main/res/layout/fragment_filters.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1E1E1E">
+
+    <!-- Filter Preview -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_filters"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:layout_margin="16dp" />
+
+    <!-- Filter Parameters -->
+    <LinearLayout
+        android:id="@+id/parameter_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" />
+
+    <!-- Intensity Slider -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Intensity"
+        android:textColor="@android:color/white"
+        android:padding="16dp" />
+
+    <SeekBar
+        android:id="@+id/intensity_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp" />
+
+</LinearLayout>
