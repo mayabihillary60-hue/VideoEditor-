@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1E1E1E">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2A2A2A"
+        app:navigationIcon="@drawable/ic_close"
+        app:title="Edit Text"
+        app:titleTextColor="@android:color/white" />
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Text Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:hint="Enter text"
+                android:textColorHint="@android:color/darker_gray"
+                app:boxStrokeColor="#FF4081"
+                app:hintTextColor="#FF4081">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Font Selection -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Font"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp" />
+
+            <Spinner
+                android:id="@+id/spinner_font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white" />
+
+            <!-- Color Grid -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Color"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_colors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <!-- Style Buttons -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Style"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ToggleButton
+                    android:id="@+id/btn_bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textOff="Bold"
+                    android:textOn="Bold"
+                    android:background="@drawable/toggle_button_bg"
+                    android:textColor="@drawable/toggle_button_text"
+                    android:layout_marginEnd="4dp" />
+
+                <ToggleButton
+                    android:id="@+id/btn_italic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textOff="Italic"
+                    android:textOn="Italic"
+                    android:background="@drawable/toggle_button_bg"
+                    android:textColor="@drawable/toggle_button_text"
+                    android:layout_marginEnd="4dp" />
+
+                <ToggleButton
+                    android:id="@+id/btn_underline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textOff="Underline"
+                    android:textOn="Underline"
+                    android:background="@drawable/toggle_button_bg"
+                    android:textColor="@drawable/toggle_button_text" />
+            </LinearLayout>
+
+            <!-- Alignment Buttons -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alignment"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btn_align_left"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="@drawable/toggle_button_bg"
+                    android:tint="@android:color/white"
+                    android:layout_marginEnd="4dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_align_center"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="@drawable/toggle_button_bg"
+                    android:tint="@android:color/white"
+                    android:layout_marginEnd="4dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_align_right"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="@drawable/toggle_button_bg"
+                    android:tint="@android:color/white" />
+            </LinearLayout>
+
+            <!-- Font Size -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Font Size"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/slider_font_size"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:valueFrom="12"
+                    android:valueTo="120"
+                    android:value="32" />
+
+                <TextView
+                    android:id="@+id/tv_font_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="32"
+                    android:textColor="#FF4081"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+
+            <!-- Letter Spacing -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Letter Spacing"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/slider_letter_spacing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:valueFrom="-0.1"
+                    android:valueTo="0.3"
+                    android:value="0.0"
+                    android:stepSize="0.01" />
+
+                <TextView
+                    android:id="@+id/tv_letter_spacing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#FF4081"
+                    android:layout_marginStart="16dp" />
+            </LinearLayout>
+
+            <!-- Shadow Controls -->
+            <CheckBox
+                android:id="@+id/checkbox_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Shadow"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:id="@+id/shadow_controls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shadow Radius"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/slider_shadow_radius"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0"
+                    android:valueTo="20"
+                    android:value="5" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#2A2A2A">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:textColor="@android:white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_apply"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Apply"
+            android:backgroundTint="#FF4081" />
+    </LinearLayout>
+
+</LinearLayout>
