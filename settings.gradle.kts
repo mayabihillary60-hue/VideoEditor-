@@ -15,9 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "VideoEditor"
 include(":app")
-include(":core:data")
-include(":core:domain")
-include(":core:presentation")
-include(":feature:gallery")
-include(":feature:editor")
-include(":library:rendering")
